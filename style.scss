@@ -1,0 +1,154 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Montserrat", sans-serif;
+}
+
+@mixin flexbox($direction, $justify) {
+  display: flex;
+  align-items: center;
+  justify-content: $justify;
+  flex-direction: $direction;
+}
+
+body {
+  background: linear-gradient(rgb(154, 186, 238), rgb(28, 116, 167));
+}
+
+header {
+  min-height: 20vh;
+  position: absolute;
+  top: 0;
+  width: 100%;
+  @include flexbox(column, center);
+  h1 {
+    font-size: 3rem;
+  }
+  p {
+    font-size: 1.15rem;
+    display: flex;
+    flex-wrap: wrap;
+    text-align: center;
+  }
+  img {
+    width: 180px;
+    height: 180px;
+    margin-top: 10px;
+  }
+}
+
+header.hide {
+  opacity: 0;
+  pointer-events: none;
+  display: none;
+}
+
+.app-container {
+  height: 100vh;
+  width: 100%;
+  @include flexbox(column, center);
+  .enter-location {
+    @include flexbox(row, center);
+    flex: 1;
+    .type-location {
+      height: 2rem;
+      border: 0.5px black solid;
+      border-radius: 5px;
+      width: 15rem;
+      padding: 5px 10px;
+      font-size: 1.25rem;
+    }
+    .search-location {
+      height: 2rem;
+      width: 2rem;
+      border: 0.5px black solid;
+      border-radius: 5px;
+      outline: none;
+      &:hover {
+        i {
+          transition: all 0.3s ease;
+          font-size: 1.25rem + 0.2rem;
+        }
+      }
+      i {
+        transition: all 0.3s ease;
+        font-size: 1.25rem;
+        transform: rotate(90deg);
+      }
+    }
+  }
+  .search-coordinates {
+    @include flexbox(row, center);
+    margin: 30px 0;
+    button {
+      padding: 5px 10px;
+      border: 1px black solid;
+      border-radius: 5px;
+      font-size: 1.25rem;
+      cursor: pointer;
+      outline: none;
+      transition: all 0.3s ease;
+      &:hover {
+        transition: all 0.3s ease;
+        background: rgb(57, 208, 235);
+        color: whitesmoke;
+      }
+    }
+  }
+}
+
+form.hide {
+  display: none;
+  pointer-events: none;
+}
+
+.show-section.hide {
+  display: none;
+  pointer-events: none;
+}
+
+.show-section {
+  height: 60vh;
+  width: 50%;
+  color: whitesmoke;
+  @include flexbox(column, space-evenly);
+  .position-image {
+    width: 100%;
+    @include flexbox(row, space-evenly);
+    h1 {
+      font-size: 3rem;
+    }
+  }
+  .degree-section {
+    @include flexbox(row, center);
+    h1 {
+      font-size: 3rem;
+      margin: 5px;
+    }
+    h2 {
+      font-size: 2.8rem;
+      margin: 5px;
+    }
+  }
+  .description-temperature {
+    h3 {
+      font-size: 2.5rem;
+    }
+  }
+}
+
+.btn {
+  padding: 5px 10px;
+  font-size: 1.25rem;
+  cursor: pointer;
+}
+
+@keyframes rotating {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(90deg);
+  }
+}
